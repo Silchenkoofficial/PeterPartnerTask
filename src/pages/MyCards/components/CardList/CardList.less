@@ -1,0 +1,35 @@
+// out: ./CardList.min.css, compress: true
+
+@import './../../../../styles/less/__modules.less';
+
+.card-list {
+    &__item {
+        padding: 24px 16px;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 1px solid @light-grey;
+        &:active {
+            transform: scale(0.98);
+            transition: transform 0.1s;
+            // background-color: rgba(#000000, 0.1);
+        }
+        svg {
+            margin-right: 16px;
+        }
+        .badge {
+            display: none;
+        }
+        &.active {
+            .badge {
+                display: block;
+                margin-left: auto;
+                min-width: 8px;
+                min-height: 8px;
+                background-color: @blue;
+                border-radius: 50%;
+            }
+        }
+    }
+}
