@@ -4,6 +4,7 @@ import Axios from 'axios';
 import {Link} from 'react-router-dom';
 import { Header, UserCard, LoadingUserCard, SubTitle, Box, BoxItem } from "components";
 import History from './components/History/History';
+import HistoryLoading from './components/History/HistoryLoading';
 
 import './Home.min.css';
 
@@ -53,7 +54,9 @@ function Home({activeCard, isLoading}) {
             onClick={() => changeCurrency('RUB')}
           />
         </Box>
-        <History activeCurrency={activeCurrency} activeCard={activeCard} />
+        {
+          !isLoading ? <History activeCurrency={activeCurrency} activeCard={activeCard} /> : <HistoryLoading />
+        }
       </div>
     );
 }

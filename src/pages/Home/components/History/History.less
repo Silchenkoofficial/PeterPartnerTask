@@ -30,3 +30,56 @@
         font-size: 17px;
     }
 }
+
+.loading {
+    .history__list {
+        .history__item {
+            align-items: stretch;
+            &--icon {
+                min-width: 44px;
+                min-height: 44px;
+                .img {}
+            }
+
+            &--title {
+                p {
+                    display: inline-block;
+                    width: 100px;
+                    height: 20px;
+                    background-color: rgba(@dark-grey, 0.5);
+                    animation: loading 1s ease-in infinite;
+                }
+            }
+
+            &--date {
+                display: inline-block;
+                width: 100px;
+                height: 10px;
+                background-color: rgba(@dark-grey, 0.5);
+                animation: loading 1s ease-in infinite;
+            }
+
+            &--amount {
+                display: inline-block;
+                width: 100px;
+                height: 20px;
+                background-color: rgba(@dark-grey, 0.5);
+                animation: loading 1s ease-in infinite;
+            }
+        }
+    }
+}
+
+@keyframes loading {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
