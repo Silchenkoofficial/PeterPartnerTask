@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Switch } from 'react-router-dom';
 import {Home, MyCards} from 'pages';
 import Axios from 'axios';
 
@@ -21,15 +21,17 @@ function App() {
 
   return (
     <div className="App">
-      <Route exact path="/" render={() => (
-        <Home activeCard={activeCard} isLoading={isLoading} />
-      )} />
-      <Route exact path="/my-cards" render={() => (
-        <MyCards
-          users={users}
-          activeCard={activeCard}
-          changeActiveCard={newCard => setActiveCard(newCard)} />
-      )} />
+        <Switch>
+          <Route exact path="/" render={() => (
+            <Home activeCard={activeCard} isLoading={isLoading} />
+          )} />
+          <Route exact path="/my-cards" render={() => (
+            <MyCards
+              users={users}
+              activeCard={activeCard}
+              changeActiveCard={newCard => setActiveCard(newCard)} />
+          )} />
+        </Switch>
     </div>
   );
 }

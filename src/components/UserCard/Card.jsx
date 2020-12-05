@@ -4,8 +4,12 @@ import './Card.min.css';
 import UserIcon from 'icons/UserIcon';
 import CardType from 'components/CardType/CardType';
 
-function Card({ cardInfo }) {
-    const [activeCurrency, setActiveCurrency] = useState('GBR');
+function Card({ cardInfo, activeCurrency, activeCurrencyData }) {
+
+    const getCurrentCurrency = (balance = 0, dollar) => {
+
+        return balance;
+    }
 
     return (
         <div className="user-card">
@@ -26,10 +30,10 @@ function Card({ cardInfo }) {
             </div>
             <div className="user-card__section">
                 <div className="user-card__currency">
-                    <p>{activeCurrency === 'GBR' && '£'}</p>
+                    <p>{activeCurrency === 'GBP' && '£'}</p>
                     <p>{activeCurrency === 'EUR' && '€'}</p>
                     <p>{activeCurrency === 'RUB' && '₽'}</p>
-                    <p>2 125,12</p>
+                    <p>{getCurrentCurrency()}</p>
                 </div>
                 <div className="user-card__balance">
                     <p className="text">Your balance</p>
