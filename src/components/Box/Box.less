@@ -1,0 +1,30 @@
+// out: ./Box.min.css, compress: true
+
+@import '../../styles/less/__modules.less';
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__item {
+        flex: 0 0 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 17px 0;
+        background-color: @white;
+        border-radius: 16px;
+        color: @dark-grey;
+        font-weight: 500;
+        cursor: pointer;
+        &.active {
+            color: @white;
+            background-color: @blue;
+        }
+        .symbol {
+            font-size: 30px;
+        }
+        .text {}
+    }
+}

@@ -2,37 +2,58 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 
 import {Link} from 'react-router-dom';
-import { Header, UserCard, LoadingUserCard, SubTitle } from "components";
-import Currency from './components/Currency/Currency';
+import { Header, UserCard, LoadingUserCard, SubTitle, Box, BoxItem } from "components";
+import History from './components/History/History';
 
 import './Home.min.css';
 
 function Home({activeCard, isLoading}) {
     const [activeCurrency, setActiveCurrency] = useState('GBP');
-    const [currencyData, setCurrencyData] = useState({});
-    const [activeCurrencyData, setActiveCurrencyData] = useState({});
-    
-    const getCurrency = async () => {
-      await Axios.get('https://www.cbr-xml-daily.ru/daily_json.js').then(res => setCurrencyData(res.data.Valute)).catch(err => console.log(err));
+
+    const changeCurrency = valute => {
+      setActiveCurrency(valute);
     }
 
     useEffect(() => {
-      getCurrency();
-      setActiveCurrencyData(currencyData[activeCurrency]);
-    }, []);
+
+    }, [activeCard]);
 
     return (
       <div className="home">
         <Header>Главная</Header>
         <Link to="/my-cards">
-          {!isLoading ? <UserCard
-            activeCurrencyData={activeCurrencyData}
-            activeCurrency={activeCurrency}
-            cardInfo={activeCard}
-          /> : <LoadingUserCard />}
+          {!isLoading ? (
+            <UserCard
+              activeCurrency={activeCurrency}
+              cardInfo={activeCard}
+              changeCurrency={(valute = "GBP") => setActiveCurrency(valute)}
+            />
+          ) : (
+            <LoadingUserCard />
+          )}
         </Link>
         <SubTitle>Change currency</SubTitle>
-        <Currency />
+        <Box>
+          <BoxItem
+            className={activeCurrency === "GBP" && "active"}
+            symbol="£"
+            text="GBP"
+            onClick={() => changeCurrency("GBP")}
+          />
+          <BoxItem
+            className={activeCurrency === "EUR" && "active"}
+            symbol="€"
+            text="EUR"
+            onClick={() => changeCurrency('EUR')}
+          />
+          <BoxItem
+            className={activeCurrency === "RUB" && "active"}
+            symbol="₽"
+            text="RUB"
+            onClick={() => changeCurrency('RUB')}
+          />
+        </Box>
+        <History activeCurrency={activeCurrency} activeCard={activeCard} />
       </div>
     );
 }

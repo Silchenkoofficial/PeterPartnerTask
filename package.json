@@ -57,6 +57,7 @@
     "react-dev-utils": "^11.0.1",
     "react-dom": "^17.0.1",
     "react-refresh": "^0.8.3",
+    "react-roubles": "^1.0.20",
     "react-router-dom": "^5.2.0",
     "react-spring": "^8.0.27",
     "react-swipeable-routes": "^0.8.0",

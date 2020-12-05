@@ -5,18 +5,20 @@ import Axios from 'axios';
 
 function App() {
   const [isLoading, setLoading] = useState(false);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState({});
   const [activeCard, setActiveCard] = useState({});
 
-  useEffect(async () => {
+  useEffect(() => {
     setLoading(true);
-    await Axios.get('https://hr.peterpartner.net/test/android/v1/users.json').then(res => {
+    Axios.get('https://hr.peterpartner.net/test/android/v1/users.json').then(res => {
       setUsers(res.data.users);
       setTimeout(() => {
         setLoading(false);
       }, 1000);
       setActiveCard(res.data.users[0]);
-    }).catch(err => console.log(err));
+    }).catch(err => {
+      console.log(err);
+    });
   }, []);
 
   return (

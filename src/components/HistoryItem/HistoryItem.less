@@ -1,0 +1,47 @@
+// out: ./HistoryItem.min.css, compress: true
+
+@import '../../styles/less/__modules.less';
+
+.history__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & + & {
+        margin-top: 22px;
+    }
+    &--icon {
+        width: 44px;
+        height: 44px;
+        border: 1px solid #EAEEF9;
+        border-radius: 12px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-position: center;
+            object-fit: cover;
+        }
+    }
+    &--title {
+        margin-right: auto;
+        margin-left: 17px;
+        p {
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 24px;
+        }
+    }
+    &--date {
+        font-size: 11px;
+        color: @dark-grey;
+    }
+    &--amount {
+        display: flex;
+        font-weight: 500;
+        font-size: 22px;
+        text-align: right;
+        p {
+            color: @dark-grey;
+            margin-right: 2px;
+        }
+    }
+}
